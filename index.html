@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artémis Courtage – Courtier prêt immobilier La Rochelle | David Marchi</title>
+  <meta name="description" content="Courtier en prêt immobilier à La Rochelle. David Marchi, 25 ans d'expérience, vous accompagne sur toute la Charente-Maritime. Simulation gratuite, réponse sous 24h." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;color:#1a2e28;background:#f5f2ed;}
+
+    /* NAV */
+    nav{background:#4a7c6f;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;}
+    .logo-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;letter-spacing:3px;text-transform:uppercase;line-height:1;}
+    .logo-tagline{font-size:9px;letter-spacing:2.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;font-family:'DM Sans',sans-serif;margin-top:4px;}
+    .nav-cta{background:#fff;color:#4a7c6f;border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border-radius:2px;text-decoration:none;display:inline-block;white-space:nowrap;}
+
+    /* HERO */
+    .hero{background:#4a7c6f;min-height:600px;display:grid;grid-template-columns:1fr 420px;align-items:stretch;}
+    .hero-left{padding:70px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;}
+    .hero-left::after{content:'';position:absolute;right:0;top:8%;bottom:8%;width:1px;background:rgba(255,255,255,0.15);}
+    .eyebrow{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:22px;}
+    h1{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.08;color:#fff;font-weight:400;margin-bottom:22px;}
+    h1 em{font-style:italic;color:#c8e6c9;}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75;max-width:460px;margin-bottom:38px;}
+    .stats{display:flex;gap:40px;}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;color:#c8e6c9;font-weight:600;line-height:1;}
+    .stat-label{font-size:10px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
+
+    /* FORM */
+    .form-panel{background:#fff;padding:52px 40px;display:flex;flex-direction:column;justify-content:center;border-left:3px solid #c8e6c9;}
+    .form-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:#1a2e28;margin-bottom:5px;}
+    .form-sub{font-size:12px;color:#999;margin-bottom:26px;letter-spacing:0.5px;}
+    label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:7px;display:block;}
+    input,select{width:100%;border:1px solid #ddd;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1a2e28;background:#fafaf8;border-radius:2px;margin-bottom:16px;outline:none;appearance:none;}
+    input:focus,select:focus{border-color:#4a7c6f;}
+    select{margin-bottom:22px;cursor:pointer;}
+    .btn-submit{width:100%;background:#4a7c6f;color:#fff;border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-bottom:12px;transition:background 0.2s;}
+    .btn-submit:hover{background:#3a6359;}
+    .btn-wa{width:100%;background:#25d366;color:#fff;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border-radius:2px;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;}
+    .form-note{font-size:10px;color:#bbb;text-align:center;margin-top:12px;letter-spacing:0.3px;}
+
+    /* STRIP */
+    .strip{background:#3a6359;padding:16px 40px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+    .strip-item{font-size:12px;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+    .strip-dot{width:5px;height:5px;border-radius:50%;background:#c8e6c9;flex-shrink:0;}
+
+    /* SECTIONS */
+    .section-label{font-size:10px;letter-spacing:3px;color:#4a7c6f;text-transform:uppercase;margin-bottom:12px;text-align:center;}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:38px;color:#1a2e28;text-align:center;margin-bottom:52px;font-weight:400;}
+
+    /* REASSURANCE */
+    .reassurance{background:#f5f2ed;padding:72px 48px;}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .card{background:#fff;border:1px solid #e5e0d8;padding:30px 24px;border-radius:2px;border-top:3px solid #4a7c6f;}
+    .card-icon{font-size:20px;margin-bottom:14px;}
+    .card-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:#1a2e28;margin-bottom:8px;}
+    .card-text{font-size:13px;color:#777;line-height:1.75;}
+
+    /* STEPS */
+    .how{background:#4a7c6f;padding:72px 48px;}
+    .how .section-title{color:#fff;}
+    .how .section-label{color:#c8e6c9;}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);}
+    .step{background:#4a7c6f;padding:32px 22px;text-align:center;}
+    .step-num{font-family:'Cormorant Garamond',serif;font-size:42px;color:#c8e6c9;opacity:0.4;line-height:1;margin-bottom:14px;}
+    .step-title{font-size:14px;font-weight:500;color:#fff;margin-bottom:7px;}
+    .step-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+    /* ZONES */
+    .zones{background:#fff;padding:52px 48px;}
+    .zone-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px;}
+    .zone-pill{background:#f5f2ed;border:1px solid #e5e0d8;padding:9px 20px;font-size:13px;color:#4a7c6f;border-radius:20px;}
+
+    /* REVIEWS */
+    .reviews{background:#f5f2ed;padding:72px 48px;}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .review-card{background:#fff;border:1px solid #e5e0d8;padding:26px;border-radius:2px;}
+    .stars{color:#4a7c6f;font-size:14px;margin-bottom:12px;letter-spacing:2px;}
+    .review-text{font-size:13px;color:#555;line-height:1.75;font-style:italic;margin-bottom:16px;}
+    .reviewer{font-size:11px;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:1px;}
+
+    /* DAVID */
+    .david{background:#1a2e28;padding:72px 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+    .david-initials{width:96px;height:96px;border-radius:50%;background:rgba(200,230,201,0.1);border:1.5px solid rgba(200,230,201,0.4);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:30px;color:#c8e6c9;margin-bottom:22px;}
+    .david-name{font-family:'Cormorant Garamond',serif;font-size:30px;color:#fff;margin-bottom:4px;}
+    .david-role{font-size:11px;color:#c8e6c9;margin-bottom:20px;letter-spacing:2px;text-transform:uppercase;}
+    .david-bio{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.85;}
+    .badges{display:flex;flex-direction:column;gap:14px;}
+    .badge{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(200,230,201,0.12);padding:16px 18px;border-radius:2px;}
+    .badge-icon{font-size:16px;margin-top:1px;flex-shrink:0;}
+    .badge-body strong{color:#c8e6c9;font-weight:500;display:block;font-size:14px;margin-bottom:3px;}
+    .badge-body span{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;}
+
+    /* CTA BOTTOM */
+    .cta-bottom{background:#4a7c6f;padding:60px 48px;text-align:center;}
+    .cta-bottom h2{font-family:'Cormorant Garamond',serif;font-size:38px;color:#fff;margin-bottom:10px;font-weight:400;}
+    .cta-bottom p{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:32px;letter-spacing:0.5px;}
+    .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-white{background:#fff;color:#4a7c6f;border:none;padding:15px 34px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;text-decoration:none;display:inline-block;}
+    .btn-wa2{background:#25d366;color:#fff;border:none;padding:15px 28px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border-radius:2px;display:flex;align-items:center;gap:8px;text-decoration:none;}
+
+    /* FOOTER */
+    footer{background:#0f1f1b;padding:22px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+    .footer-logo-main{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:rgba(200,230,201,0.55);letter-spacing:2px;text-transform:uppercase;}
+    .footer-logo-tag{font-size:9px;color:rgba(255,255,255,0.22);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+    .footer-text{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.5px;}
+
+    /* MOBILE */
+    @media(max-width:700px){
+      nav{padding:14px 20px;}
+      .hero{grid-template-columns:1fr;}
+      .hero-left::after{display:none;}
+      h1{font-size:36px;}
+      .hero-left{padding:44px 24px;}
+      .form-panel{padding:36px 24px;}
+      .cards,.steps,.review-grid{grid-template-columns:1fr;}
+      .david{grid-template-columns:1fr;gap:40px;}
+      .strip{gap:14px;padding:16px 20px;}
+      .reassurance,.how,.zones,.reviews,.david,.cta-bottom{padding:52px 24px;}
+      footer{padding:20px 24px;flex-direction:column;align-items:flex-start;gap:12px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <div class="logo-name">Artémis Courtage</div>
+      <div class="logo-tagline">Mon prêt immobilier sur-mesure</div>
+    </div>
+    <a href="tel:0660121886" class="nav-cta">📞 06 60 12 18 86</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Courtier indépendant — La Rochelle & Charente-Maritime</p>
+      <h1>Votre projet immobilier,<br><em>le meilleur taux.</em><br>Sans compromis.</h1>
+      <p class="hero-sub">Avec 25 ans d'expérience en banque et en courtage, David Marchi vous accompagne de la simulation à la signature chez le notaire — sur toute la Charente-Maritime et le sud Vendée.</p>
+      <div class="stats">
+        <div>
+          <div class="stat-num">25</div>
+          <div class="stat-label">Ans d'expérience</div>
+        </div>
+        <div>
+          <div class="stat-num">25+</div>
+          <div class="stat-label">Banques partenaires</div>
+        </div>
+        <div>
+          <div class="stat-num">24h</div>
+          <div class="stat-label">Premier retour garanti</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-panel">
+      <div class="form-title">Simulation gratuite</div>
+      <p class="form-sub">Réponse sous 24h · Sans engagement</p>
+      <label for="prenom">Votre prénom</label>
+      <input id="prenom" type="text" placeholder="Jean" />
+      <label for="tel">Téléphone</label>
+      <input id="tel" type="tel" placeholder="06 XX XX XX XX" />
+      <label for="montant">Montant du projet</label>
+      <select id="montant">
+        <option>Moins de 150 000 €</option>
+        <option>150 000 – 250 000 €</option>
+        <option>250 000 – 400 000 €</option>
+        <option>Plus de 400 000 €</option>
+      </select>
+      <button class="btn-submit" onclick="envoyerLead()">Obtenir ma simulation gratuite →</button>
+      <a href="https://wa.me/33660121886?text=Bonjour%20David%2C%20je%20souhaite%20une%20simulation%20pour%20mon%20projet%20immobilier" class="btn-wa" target="_blank">💬 Contacter via WhatsApp</a>
+      <p class="form-note">Données confidentielles — aucune transmission à des tiers</p>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-item"><span class="strip-dot"></span>Simulation 100% gratuite</div>
+    <div class="strip-item"><span class="strip-dot"></span>Sans engagement</div>
+    <div class="strip-item"><span class="strip-dot"></span>Réponse sous 24h ouvrés</div>
+    <div class="strip-item"><span class="strip-dot"></span>Courtier COBSP certifié</div>
+  </div>
+
+  <section class="reassurance">
+    <p class="section-label">Pourquoi Artémis Courtage</p>
+    <h2 class="section-title">Ce que vous gagnez en travaillant avec David</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Accès à 25 banques</div>
+        <p class="card-text">Banques nationales et régionales, Crédit Agricole Charente-Maritime, Caisse d'Épargne Atlantique… David négocie pour vous auprès de l'ensemble du réseau.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Réponse sous 24h</div>
+        <p class="card-text">Votre dossier est analysé rapidement. Pas de semaines d'attente — vous savez où vous en êtes et comment avancer sereinement.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Accompagnement complet</div>
+        <p class="card-text">De la première simulation jusqu'à la signature chez le notaire. David reste à vos côtés à chaque étape, en présentiel ou à distance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <p class="section-label">Comment ça se passe</p>
+    <h2 class="section-title">4 étapes vers votre financement</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Simulation gratuite</div>
+        <p class="step-text">Formulaire ou appel direct. Premier retour garanti sous 24h ouvrés.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Analyse du dossier</div>
+        <p class="step-text">David étudie votre situation et identifie les meilleures options bancaires.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Négociation bancaire</div>
+        <p class="step-text">Mise en concurrence de 25 banques pour obtenir le meilleur taux.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Signature & déblocage</div>
+        <p class="step-text">Accompagnement jusqu'à la signature chez le notaire et le déblocage des fonds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="zones">
+    <p class="section-label">Zone d'intervention</p>
+    <h2 class="section-title">Votre courtier local sur toute la région</h2>
+    <div class="zone-grid">
+      <span class="zone-pill">📍 La Rochelle</span>
+      <span class="zone-pill">📍 Rochefort</span>
+      <span class="zone-pill">📍 Niort</span>
+      <span class="zone-pill">📍 Île d'Oléron</span>
+      <span class="zone-pill">📍 Marennes</span>
+      <span class="zone-pill">📍 Saintes</span>
+      <span class="zone-pill">📍 Île de Ré</span>
+      <span class="zone-pill">📍 Charente-Maritime</span>
+      <span class="zone-pill">📍 Sud Vendée</span>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <p class="section-label">Témoignages clients</p>
+    <h2 class="section-title">Ce que disent nos clients</h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"M. David Marchi a été d'une grande aide — sa rapidité à trouver un prêt avec un taux intéressant, ses conseils judicieux, ainsi que sa disponibilité et ses explications sont de premier ordre. C'est sans aucun doute une personne fiable et professionnelle."</p>
+        <p class="reviewer">Jérémie — Aytré</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"M. Marchi fut très efficace et à l'écoute. Notre dossier n'était pas simple mais il nous a tout de même trouvé notre financement — nous allons enfin pouvoir obtenir notre bien de rêve. Je le remercie grandement et le recommande."</p>
+        <p class="reviewer">Arthur — Saint-Georges-de-Didonne</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Professionnel de qualité. M. Marchi a su, par sa compétence, sa disponibilité et sa gentillesse, nous accompagner du début jusqu'à la fin de notre projet. Si un autre projet se présente, je ferai sans aucun doute appel à lui."</p>
+        <p class="reviewer">Pascale — Dompierre-sur-Mer</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="david">
+    <div>
+      <div class="david-initials">D</div>
+      <div class="david-name">David Marchi</div>
+      <div class="david-role">Artémis Courtage · La Rochelle</div>
+      <p class="david-bio">Après 25 ans passés au sein du secteur bancaire et dans le courtage immobilier et professionnel, j'ai fait le choix de l'indépendance pour défendre uniquement vos intérêts. Je connais les rouages des banques de l'intérieur — c'est ce qui fait la différence pour vos dossiers.</p>
+    </div>
+    <div class="badges">
+      <div class="badge">
+        <span class="badge-icon">🎓</span>
+        <div class="badge-body"><strong>25 ans d'expérience bancaire</strong><span>Maîtrise des critères d'acceptation de chaque établissement.</span></div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon">🏠</span>
+        <div class="badge-body"><strong>Prêts immobiliers & professionnels</strong><span>Résidence principale, investissement locatif, SCI, financement pro.</span></div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon">📍</span>
+        <div class="badge-body"><strong>Ancré localement</strong><span>La Rochelle, Charente-Maritime, Niort, Oléron, sud Vendée.</span></div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon">✅</span>
+        <div class="badge-body"><strong>COBSP certifié</strong><span>Courtier habilité, soumis aux obligations légales de conseil.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-bottom">
+    <h2>Votre projet mérite un accompagnement sur-mesure.</h2>
+    <p>Simulation gratuite · Sans engagement · Réponse sous 24h</p>
+    <div class="cta-buttons">
+      <a href="tel:0660121886" class="btn-white">📞 Appeler David</a>
+      <a href="https://wa.me/33660121886?text=Bonjour%20David%2C%20je%20souhaite%20une%20simulation%20pour%20mon%20projet%20immobilier" class="btn-wa2" target="_blank">💬 WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-logo-main">Artémis Courtage</div>
+      <div class="footer-logo-tag">Mon prêt immobilier sur-mesure</div>
+    </div>
+    <span class="footer-text">La Rochelle · Charente-Maritime · 06 60 12 18 86 · Courtier COBSP</span>
+  </footer>
+
+  <script>
+    function envoyerLead() {
+      const prenom = document.getElementById('prenom').value;
+      const tel = document.getElementById('tel').value;
+      const montant = document.getElementById('montant').value;
+      if (!prenom || !tel) {
+        alert('Merci de renseigner votre prénom et votre téléphone.');
+        return;
+      }
+      const msg = encodeURIComponent(
+        'Bonjour David, je souhaite une simulation gratuite.\n' +
+        'Prénom : ' + prenom + '\n' +
+        'Téléphone : ' + tel + '\n' +
+        'Montant du projet : ' + montant
+      );
+      window.open('https://wa.me/33660121886?text=' + msg, '_blank');
+    }
+  </script>
+
+</body>
+</html>
