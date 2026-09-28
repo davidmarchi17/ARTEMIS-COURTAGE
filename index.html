@@ -1171,6 +1171,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       opacity: 1;
       transform: translateY(0);
     }
+     /* ============================================================
+       CORRECTIF CONTRASTE + MOBILE — CSS uniquement (sept. 2026)
+       Aucun impact sur formulaire / Web3Forms / GTM / conversions
+       ============================================================ */
+
+    /* --- Hero (fond clair) : textes blancs -> vert foncé de la charte --- */
+    .hero-badge { background: var(--white); border-color: rgba(28, 43, 34, 0.15); }
+    .hero-badge-stars { color: #4f7d55; }
+    .hero-badge-text { color: var(--navy); }
+    .hero-tag { color: var(--navy); background: var(--gold-pale); border-color: rgba(122, 158, 126, 0.55); }
+    .hero h1 { color: var(--navy); }
+    .hero h1 em { color: #2f5d38; }
+    .hero-sub { color: var(--navy-light); }
+    .hero-bullets li { color: var(--navy); }
+    .hero-reassurance-item { color: var(--navy-light); }
+    .hero-reassurance-item svg { opacity: 1; }
+
+    /* --- Autres textes sous le seuil WCAG AA --- */
+    .section-eyebrow, .bank-card .card-tag { color: #466e4c; }
+    .testimonial-stars { color: #4f7d55; }
+    .author-info span { color: #56705a; }
+    .form-gdpr { color: #56705a; }
+    .review-mini-author { color: rgba(255, 255, 255, 0.72); }
+    .exit-cta p { color: #173025; }
+    footer p { color: rgba(255, 255, 255, 0.72); }
+
+    /* Ancre formulaire : ne pas passer sous la barre de navigation fixe */
+    #formulaire { scroll-margin-top: 72px; }
+
+    /* --- Mobile uniquement : formulaire remonté juste après le titre --- */
+    @media (max-width: 768px) {
+      .urgency-banner { font-size: 12px; padding: 6px 12px; line-height: 1.35; }
+      .navbar { padding: 8px 16px; }
+      .hero { padding: 18px 16px 36px; }
+
+      .hero-inner { display: flex; flex-direction: column; gap: 0; }
+      .hero-left { display: contents; }
+
+      .hero-tag   { order: 1; align-self: flex-start; margin-bottom: 10px; font-size: 10.5px; padding: 4px 10px; }
+      .hero h1    { order: 2; font-size: 26px; line-height: 1.2; margin-bottom: 12px; }
+      .hero-badge { order: 3; align-self: flex-start; margin-bottom: 16px; padding: 6px 12px; gap: 8px; }
+      .hero-badge-text { font-size: 12px; }
+      .form-card  { order: 4; width: 100%; padding: 22px 18px 20px; }
+      .form-subtitle { margin-bottom: 16px; }
+      .form-group { margin-bottom: 12px; }
+      /* 16px mini : évite le zoom automatique d'iOS au focus des champs */
+      .form-group input, .form-group select { font-size: 16px; }
+      .hero-sub   { order: 5; margin: 28px 0 18px; font-size: 15.5px; }
+      .hero-bullets { order: 6; margin-bottom: 22px; gap: 10px; }
+      .hero-bullets li { font-size: 15px; }
+      .hero-reassurance { order: 7; gap: 12px 18px; }
+    }
+
   </style>
 </head>
 <body>
