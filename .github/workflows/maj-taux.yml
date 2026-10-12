@@ -1,0 +1,44 @@
+# Met à jour taux.json chaque lundi à partir des taux affichés par Artémis Courtage
+name: Mise à jour des taux
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # chaque lundi, 8 h heure de Paris (été)
+  workflow_dispatch:      # bouton "Run workflow" pour lancer à la main
+permissions:
+  contents: write
+jobs:
+  taux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Récupérer les taux
+        run: |
+          curl -sSL --fail https://www.artemiscourtage.com/widget/calculette--js -o calc.js
+          python3 - <<'PY'
+          import re, json, datetime
+          js = open('calc.js', encoding='utf-8', errors='ignore').read()
+          t = {}
+          for d in ('15', '20', '25'):
+              m = re.search(r'name=\\?"dureeCapacite1\\?"\s+value=\\?"%s\\?"[^>]*?data-rate=\\?"([\d.]+)' % d, js)
+              if m:
+                  v = float(m.group(1))
+                  if 1.0 <= v <= 8.0:      # garde-fou contre une valeur aberrante
+                      t[d] = v
+          if len(t) == 3:
+              old = json.load(open('taux.json')) if __import__('os').path.exists('taux.json') else {}
+              if any(old.get(k) != t[k] for k in t):
+                  t['maj'] = datetime.date.today().isoformat()
+                  json.dump({'maj': t['maj'], '15': t['15'], '20': t['20'], '25': t['25']}, open('taux.json', 'w'))
+                  print('Taux mis à jour :', t)
+              else:
+                  print('Taux inchangés')
+          else:
+              print('Taux introuvables, fichier conservé :', t)
+          PY
+          rm -f calc.js
+      - name: Enregistrer
+        run: |
+          git config user.name "maj-taux"
+          git config user.email "actions@github.com"
+          git add taux.json
+          git diff --cached --quiet || (git commit -m "Mise à jour automatique des taux" && git push)
