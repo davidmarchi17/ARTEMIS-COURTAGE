@@ -273,18 +273,19 @@ h1{font:700 40px/1.15 var(--fh);margin:28px 0 26px}
       </div>
 
       <div class="step" data-s="2">
-        <h3>Vous voulez investir dans :</h3>
+        <h3>Où en est votre projet ?</h3>
         <div class="opts" data-auto>
-          <label><input type="radio" name="destination" value="Résidence principale"><span>Résidence principale</span></label>
-          <label><input type="radio" name="destination" value="Résidence secondaire"><span>Résidence secondaire</span></label>
-          <label><input type="radio" name="destination" value="Investissement locatif nu"><span>Investissement locatif nu</span></label>
-          <label><input type="radio" name="destination" value="Investissement locatif meublé"><span>Investissement locatif meublé</span></label>
+          <label><input type="radio" name="avancement" value="Je me renseigne"><span>Je me renseigne</span></label>
+          <label><input type="radio" name="avancement" value="J'ai trouvé un bien"><span>J'ai trouvé un bien</span></label>
+          <label><input type="radio" name="avancement" value="Compromis signé"><span>Compromis signé</span></label>
+          <label><input type="radio" name="avancement" value="Prêt en cours à renégocier"><span>Prêt en cours à renégocier</span></label>
         </div>
       </div>
 
       <div class="step" data-s="3">
-        <h3>Votre projet :</h3>
-        <div class="f"><label class="t">Montant du crédit*</label><input class="fi" id="t-mnt" inputmode="numeric" data-money placeholder="€"></div>
+        <h3>Montant approximatif à financer</h3>
+        <div class="f"><label class="t">Montant du crédit*</label><small>(Une estimation suffit)</small><input class="fi" id="t-mnt" inputmode="numeric" data-money placeholder="€"></div>
+        <div class="hide">
         <div class="g2">
           <div class="f"><label class="t">Mon foyer gagne*</label><input class="fi" id="t-rev" inputmode="numeric" data-money placeholder="€ / mois"></div>
           <div class="f"><label class="t">Crédits de mon foyer</label><input class="fi" id="t-chg" inputmode="numeric" data-money placeholder="€ / mois"></div>
@@ -297,6 +298,7 @@ h1{font:700 40px/1.15 var(--fh);margin:28px 0 26px}
         <div class="f"><label class="t">Première acquisition*</label><small>(Êtes-vous primo-accédant ?)</small><div class="chips">
           <label><input type="radio" name="primo" value="Oui"><span>Oui</span></label>
           <label><input type="radio" name="primo" value="Non"><span>Non</span></label></div></div>
+        </div>
         <p class="err" id="e3"></p>
       </div>
 
@@ -307,14 +309,14 @@ h1{font:700 40px/1.15 var(--fh);margin:28px 0 26px}
         </div>
         <h3>Je souhaite être recontacté</h3>
         <div class="g2">
-          <div class="f"><label class="t" for="t-nom">Nom*</label><input class="fi" id="t-nom" autocomplete="family-name" placeholder="Ex. : Dupont"></div>
+          <div class="f hide"><label class="t" for="t-nom">Nom</label><input class="fi" id="t-nom" autocomplete="family-name" placeholder="Ex. : Dupont"></div>
           <div class="f"><label class="t" for="t-prenom">Prénom*</label><input class="fi" id="t-prenom" autocomplete="given-name" placeholder="Ex. : Jules"></div>
-          <div class="f"><label class="t" for="t-email">E-mail*</label><input class="fi" id="t-email" type="email" autocomplete="email" placeholder="Ex. : dupont.jules@gmail.com"></div>
+          <div class="f hide"><label class="t" for="t-email">E-mail</label><input class="fi" id="t-email" type="email" autocomplete="email" placeholder="Ex. : dupont.jules@gmail.com"></div>
           <div class="f"><label class="t" for="t-tel">Téléphone*</label><input class="fi" id="t-tel" type="tel" autocomplete="tel" placeholder="Ex. : 06 00 00 00 00"></div>
         </div>
-        <div class="f"><label class="t" for="t-cp">Code postal et ville</label><input class="fi" id="t-cp" placeholder="Ex. : 17000 La Rochelle"></div>
-        <label class="chk"><input type="checkbox" id="t-cgu"><span>J'accepte d'être recontacté par Artémis Courtage La Rochelle au sujet de mon projet.*</span></label>
-        <label class="chk"><input type="checkbox" id="t-rgpd"><span>J'accepte que mes données à caractère personnel soient utilisées par Artémis Courtage pour l'étude de mon financement.*</span></label>
+        <div class="f hide"><label class="t" for="t-cp">Code postal et ville</label><input class="fi" id="t-cp" placeholder="Ex. : 17000 La Rochelle"></div>
+        <label class="chk"><input type="checkbox" id="t-cgu"><span>J'accepte d'être recontacté par Artémis Courtage La Rochelle et que mes données soient utilisées pour l'étude de mon financement.*</span></label>
+        <label class="chk hide"><input type="checkbox" id="t-rgpd"><span>J'accepte que mes données à caractère personnel soient utilisées par Artémis Courtage pour l'étude de mon financement.*</span></label>
         <p class="err" id="e4"></p>
       </div>
 
@@ -433,7 +435,7 @@ function recap(){
 }
 function show(n){
   step=n; $$('.step').forEach(function(s){s.classList.toggle('on',+s.dataset.s===n)});
-  $('#prog').style.width=(Math.min(n,5)/5*100)+'%';
+  $('#prog').style.width=(Math.min(n,4)/4*100)+'%';
   $('#nav').classList.toggle('hide',n===6);
   $('#back').style.visibility=(n===1||(n===5&&sent))?'hidden':'visible';
   $('#next').classList.toggle('hide',n<3);
@@ -461,7 +463,7 @@ $$('input[name="t-dur"]').forEach(function(i){i.addEventListener('change',recap)
 function lead(){return {
   nom:$('#t-nom').value.trim(), prenom:$('#t-prenom').value.trim(), email:$('#t-email').value.trim(),
   telephone:$('#t-tel').value.trim(), ville:$('#t-cp').value.trim(),
-  besoin:extra||'Crédit immobilier', nature:radio('nature'), destination:radio('destination'),
+  besoin:extra||'Crédit immobilier', nature:radio('nature'), avancement:radio('avancement'),
   montant_credit:$('#t-mnt').value+' €', revenus_foyer:$('#t-rev').value+' €/mois',
   credits_en_cours:($('#t-chg').value||'0')+' €/mois', duree:radio('t-dur')+' ans',
   apport:($('#t-app').value||'0')+' €', primo_accedant:radio('primo'),
@@ -469,7 +471,7 @@ function lead(){return {
 }}
 function send(d,parrain){
   var body=Object.assign({access_key:WEB3FORMS_KEY,
-    subject:(parrain?'[Parrain] ':'')+'Simulateur – '+d.prenom+' '+d.nom+' – '+d.montant_credit,
+    subject:(parrain?'[Parrain] ':'')+'Simulateur – '+d.prenom+' – '+d.avancement+' – '+d.montant_credit,
     from_name:'Simulateur courtier-larochelle.fr'},d);
   if(!WEB3FORMS_KEY||WEB3FORMS_KEY.indexOf('VOTRE')===0){console.warn('Clé Web3Forms manquante',body);return Promise.resolve()}
   return fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(body)})
@@ -480,24 +482,20 @@ $('#next').addEventListener('click',function(){
   var e='';
   if(step===3){
     if(!num('#t-mnt'))e='Indiquez le montant du crédit.';
-    else if(!num('#t-rev'))e='Indiquez les revenus mensuels de votre foyer.';
-    else if(!radio('t-dur'))e='Choisissez une durée.';
-    else if(!radio('primo'))e='Précisez s\'il s\'agit d\'une première acquisition.';
     $('#e3').textContent=e; if(!e)show(4); return;
   }
   if(step===4){
     var d=lead();
-    if(!d.nom||!d.prenom)e='Indiquez votre nom et votre prénom.';
-    else if(!/^\S+@\S+\.\S+$/.test(d.email))e='Adresse e-mail invalide.';
+    if(!d.prenom)e='Indiquez votre prénom.';
     else if(d.telephone.replace(/\D/g,'').length<10)e='Numéro de téléphone invalide.';
-    else if(!$('#t-cgu').checked||!$('#t-rgpd').checked)e='Merci de cocher les deux cases.';
+    else if(!$('#t-cgu').checked)e='Merci de cocher la case de consentement.';
     $('#e4').textContent=e; if(e)return;
     var b=this; b.disabled=true; b.textContent='Envoi…';
     send(d,false).then(function(){
       sent=true;
       dl({event:'generate_lead',form:'simulateur',valeur:d.montant_credit});
       if(typeof gtag==='function'&&window.ADS_CONVERSION) gtag('event','conversion',{send_to:window.ADS_CONVERSION,value:1.0,currency:'EUR'});
-      show(5);
+      show(6);
     }).catch(function(){$('#e4').textContent='Envoi impossible. Appelez David au 06 60 12 18 86.'})
       .then(function(){b.disabled=false;if(step===4)b.textContent='Recontactez-moi'});
     return;
