@@ -556,5 +556,15 @@ $('#next').addEventListener('click',function(){
 });
 })();
 </script>
+<script>
+/* Suivi Google Ads : clics téléphone et e-mail */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+  if(!a||typeof gtag!=='function')return;
+  var tel=a.getAttribute('href').indexOf('tel:')===0;
+  gtag('event','conversion',{send_to:tel?'AW-10782965605/FzFdCM2w1bUdEOX-25Uo':'AW-10782965605/RjmaCNCw1bUdEOX-25Uo',value:1.0,currency:'EUR'});
+  (window.dataLayer=window.dataLayer||[]).push({event:tel?'clic_telephone':'clic_email'});
+},true);
+</script>
 </body>
 </html>
