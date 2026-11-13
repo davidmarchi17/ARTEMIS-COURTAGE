@@ -66,6 +66,12 @@ h1{font:700 40px/1.15 var(--fh);margin:28px 0 26px}
 .durs input:checked+span{background:#f7f7fd;color:var(--bg)}
 .durs input:focus-visible+span{outline:2px solid var(--yellow)}
 .hide{display:none!important}
+.hero h1{margin:22px 0 8px}
+.hero .sub{margin:0 0 22px;font-size:17px}
+.sim .h1{font:700 40px/1.15 var(--fh);margin:28px 0 26px}
+.gnote{margin:14px 0 0;font:700 15px var(--fh)}
+.gnote .st{color:var(--yellow);letter-spacing:2px}
+.chips.wrap{flex-wrap:wrap}.chips.wrap label{flex:1 1 40%}
 .circle{width:clamp(290px,26vw,400px);height:clamp(290px,26vw,400px);border-radius:50%;background:var(--yellow);color:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;margin:0 auto}
 .circle .l{font:600 16px/1.25 var(--fb)}
 .circle .v{font:800 clamp(34px,3vw,46px)/1.1 var(--fh);margin:6px 0 2px}
@@ -179,7 +185,7 @@ html{scroll-behavior:smooth}
   .top{display:none}
   header .logo{height:40px}
   header .cta{font-size:14px;padding:10px 16px}
-  h1{font-size:30px}
+  h1,.sim .h1{font-size:30px}
   .pills{gap:10px}.pill{width:calc(50% - 5px)}
   .simgrid{grid-template-columns:1fr;gap:28px}
   .tabs{gap:8px 16px}.tab{font-size:15px}
@@ -205,52 +211,18 @@ html{scroll-behavior:smooth}
   <div class="top"><a href="#tunnel" data-open>Étude gratuite sous 24 h</a><a href="tel:+33660121886" class="tel">06 60 12 18 86</a></div>
   <div class="bar">
     <a href="https://courtier-larochelle.fr/"><img class="logo" src="https://www.artemiscourtage.com/wp-content/uploads/2024/04/New_logo_Artemis_Courtage-blanc-1.png" alt="Artémis Courtage La Rochelle" width="108" height="52"></a>
-    <button class="cta" data-open>Simulez votre projet →</button>
+    <button class="cta" data-open>Être rappelé gratuitement →</button>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="sim">
-    <h1>Nos Simulateurs</h1>
-    <div class="pills">
-      <a class="pill p1" href="#simulateur">Crédit immobilier</a>
-      <a class="pill p2" href="#assurance-emprunteur">Assurance de prêt</a>
-      <button class="pill p3" data-open data-nature="Regroupement de crédits">Regroupement de Crédit</button>
-      <button class="pill p4" data-open data-nature="Prêt hypothécaire">Prêt Hypothécaire</button>
-    </div>
-
-    <section id="simulateur">
-      <h2>Simulez votre <span class="y">prêt immobilier</span></h2>
-      <p class="sub">Estimez votre capacité d'emprunt ou d'acquisition et votre mensualité de crédit en quelques secondes.</p>
-      <div class="tabs" role="tablist">
-        <button class="tab on" data-tab="cap">Capacité d'emprunt</button>
-        <button class="tab" data-tab="acq">Capacité d'acquisition</button>
-        <button class="tab" data-tab="men">Mensualité de crédit</button>
-      </div>
-      <div class="simgrid">
-        <div class="panel" id="sim-in">
-          <div class="row x-capacq"><div class="lab"><b>Mon foyer gagne*</b><small>Montant global de vos revenus perçus (rémunérations, primes, revenus immobiliers, aides…) avant déduction du prélèvement à la source</small></div><div class="pin"><input id="s-rev" inputmode="numeric" data-money placeholder="€ / mois"></div></div>
-          <div class="row x-capacq"><div class="lab"><b>Crédits de mon foyer</b><small>Ensemble de vos charges récurrentes (crédits à la consommation, crédit étudiant, crédit auto…) qui resteront après l'octroi du financement.</small></div><div class="pin"><input id="s-chg" inputmode="numeric" data-money placeholder="€ / mois"></div></div>
-          <div class="row x-men hide"><div class="lab"><b>Je souhaite emprunter*</b></div><div class="pin"><input id="s-mnt" inputmode="numeric" data-money placeholder="200 000 €"></div></div>
-          <div class="row x-acq hide"><div class="lab"><b>Apport personnel</b><small>(idéalement 10 % du crédit)</small></div><div class="pin"><input id="s-app" inputmode="numeric" data-money placeholder="€"></div></div>
-          <div class="row x-acq hide"><div class="lab"><b>Type de bien</b></div><div class="durs"><label><input type="radio" name="s-bien" value="ancien" checked><span>Ancien</span></label><label><input type="radio" name="s-bien" value="neuf"><span>Neuf</span></label></div></div>
-          <div class="row"><div class="lab"><b>Durée du prêt</b><small>(Sélectionnez une durée)</small></div><div class="durs"><label><input type="radio" name="s-dur" value="15"><span>15 ans</span></label><label><input type="radio" name="s-dur" value="20" checked><span>20 ans</span></label><label><input type="radio" name="s-dur" value="25"><span>25 ans</span></label></div></div>
-          <div class="row"><div class="lab"><b>Au taux de</b><small>(Taux actuel moyen)</small></div><div class="pin rate"><input id="s-taux" inputmode="decimal" value="3,16 %"></div></div>
-        </div>
-        <div class="circle" aria-live="polite">
-          <div class="l" id="r-l">Vous pourriez<br>emprunter</div>
-          <div class="v" id="r-v">—</div>
-          <div class="s" id="r-s">Renseignez vos revenus</div>
-          <div class="det hide" id="r-det"></div>
-          <button class="btn-dark" data-open id="r-btn">Simulez votre projet ✓</button>
-          <div class="ok">✓ Gratuit &amp; immédiat</div>
-        </div>
-      </div>
-    </section>
+  <div class="hero">
+    <h1>Votre courtier en crédit immobilier à La Rochelle</h1>
+    <p class="sub">Répondez à 3 questions : David vous rappelle <b>gratuitement sous 24 h</b>, sans engagement.</p>
   </div>
 
   <!-- TUNNEL -->
-  <section class="tunnel hide" id="tunnel">
+  <section class="tunnel" id="tunnel">
     <aside class="left">
       <h3>Artémis Courtage,</h3>
       <div class="tag">mon prêt immo sur mesure</div>
@@ -258,9 +230,11 @@ html{scroll-behavior:smooth}
         <p><b>Le meilleur taux,</b> rien de moins</p>
         <p><b>Étude gratuite</b> et sans engagement</p>
         <p><b>25 ans d'expérience bancaire</b> à votre service</p>
+        <p><b>Rappel sous 24 h</b> par David, à La Rochelle</p>
       </div>
-      <h4>Votre projet</h4>
-      <div class="recap">
+      <p class="gnote"><span class="st">★★★★★</span> 4,8/5 sur Google</p>
+      <h4 class="hide">Votre projet</h4>
+      <div class="recap hide">
         <div><span>Montant du crédit</span><b id="rc-m">—</b></div>
         <div><span>Durée du crédit</span><b id="rc-d">—</b></div>
         <div><span>Taux d'intérêt</span><b id="rc-t">—</b></div>
@@ -283,6 +257,7 @@ html{scroll-behavior:smooth}
         <div class="opts" data-auto>
           <label><input type="radio" name="nature" value="Acquérir un bien neuf"><span>Acquérir un bien immobilier neuf</span></label>
           <label><input type="radio" name="nature" value="Acquérir un bien ancien"><span>Acquérir un bien immobilier ancien</span></label>
+          <label><input type="radio" name="nature" value="Investissement locatif"><span>Investissement locatif</span></label>
           <label><input type="radio" name="nature" value="Faire construire"><span>Faire construire</span></label>
           <label><input type="radio" name="nature" value="Renégocier mon taux"><span>Renégocier mon taux</span></label>
           <label><input type="radio" name="nature" value="SCPI / Divorce"><span>SCPI / Divorce</span></label>
@@ -328,9 +303,14 @@ html{scroll-behavior:smooth}
         <div class="g2">
           <div class="f hide"><label class="t" for="t-nom">Nom</label><input class="fi" id="t-nom" autocomplete="family-name" placeholder="Ex. : Dupont"></div>
           <div class="f"><label class="t" for="t-prenom">Prénom*</label><input class="fi" id="t-prenom" autocomplete="given-name" placeholder="Ex. : Jules"></div>
-          <div class="f hide"><label class="t" for="t-email">E-mail</label><input class="fi" id="t-email" type="email" autocomplete="email" placeholder="Ex. : dupont.jules@gmail.com"></div>
           <div class="f"><label class="t" for="t-tel">Téléphone*</label><input class="fi" id="t-tel" type="tel" autocomplete="tel" placeholder="Ex. : 06 00 00 00 00"></div>
+          <div class="f"><label class="t" for="t-email">E-mail <small style="display:inline">(facultatif)</small></label><input class="fi" id="t-email" type="email" autocomplete="email" placeholder="Ex. : dupont.jules@gmail.com"></div>
         </div>
+        <div class="f"><label class="t">Quand préférez-vous être rappelé ?</label><div class="chips wrap">
+          <label><input type="radio" name="creneau" value="Matin (9h-12h)"><span>Matin</span></label>
+          <label><input type="radio" name="creneau" value="Midi (12h-14h)"><span>Midi</span></label>
+          <label><input type="radio" name="creneau" value="Fin de journée (17h-19h)"><span>Fin de journée</span></label>
+          <label><input type="radio" name="creneau" value="Samedi matin"><span>Samedi matin</span></label></div></div>
         <div class="f hide"><label class="t" for="t-cp">Code postal et ville</label><input class="fi" id="t-cp" placeholder="Ex. : 17000 La Rochelle"></div>
         <label class="chk"><input type="checkbox" id="t-cgu"><span>J'accepte d'être recontacté par Artémis Courtage La Rochelle et que mes données soient utilisées pour l'étude de mon financement.*</span></label>
         <label class="chk hide"><input type="checkbox" id="t-rgpd"><span>J'accepte que mes données à caractère personnel soient utilisées par Artémis Courtage pour l'étude de mon financement.*</span></label>
@@ -364,6 +344,45 @@ html{scroll-behavior:smooth}
       </div>
     </div>
   </section>
+
+  <div class="sim">
+    <h2 class="h1">Faites vos calculs</h2>
+    <div class="pills">
+      <a class="pill p1" href="#simulateur">Crédit immobilier</a>
+      <a class="pill p2" href="#assurance-emprunteur">Assurance de prêt</a>
+      <button class="pill p3" data-open data-nature="Regroupement de crédits">Regroupement de Crédit</button>
+      <button class="pill p4" data-open data-nature="Prêt hypothécaire">Prêt Hypothécaire</button>
+    </div>
+
+    <section id="simulateur">
+      <h2>Simulez votre <span class="y">prêt immobilier</span></h2>
+      <p class="sub">Estimez votre capacité d'emprunt ou d'acquisition et votre mensualité de crédit en quelques secondes.</p>
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-tab="cap">Capacité d'emprunt</button>
+        <button class="tab" data-tab="acq">Capacité d'acquisition</button>
+        <button class="tab" data-tab="men">Mensualité de crédit</button>
+      </div>
+      <div class="simgrid">
+        <div class="panel" id="sim-in">
+          <div class="row x-capacq"><div class="lab"><b>Mon foyer gagne*</b><small>Montant global de vos revenus perçus (rémunérations, primes, revenus immobiliers, aides…) avant déduction du prélèvement à la source</small></div><div class="pin"><input id="s-rev" inputmode="numeric" data-money placeholder="€ / mois"></div></div>
+          <div class="row x-capacq"><div class="lab"><b>Crédits de mon foyer</b><small>Ensemble de vos charges récurrentes (crédits à la consommation, crédit étudiant, crédit auto…) qui resteront après l'octroi du financement.</small></div><div class="pin"><input id="s-chg" inputmode="numeric" data-money placeholder="€ / mois"></div></div>
+          <div class="row x-men hide"><div class="lab"><b>Je souhaite emprunter*</b></div><div class="pin"><input id="s-mnt" inputmode="numeric" data-money placeholder="200 000 €"></div></div>
+          <div class="row x-acq hide"><div class="lab"><b>Apport personnel</b><small>(idéalement 10 % du crédit)</small></div><div class="pin"><input id="s-app" inputmode="numeric" data-money placeholder="€"></div></div>
+          <div class="row x-acq hide"><div class="lab"><b>Type de bien</b></div><div class="durs"><label><input type="radio" name="s-bien" value="ancien" checked><span>Ancien</span></label><label><input type="radio" name="s-bien" value="neuf"><span>Neuf</span></label></div></div>
+          <div class="row"><div class="lab"><b>Durée du prêt</b><small>(Sélectionnez une durée)</small></div><div class="durs"><label><input type="radio" name="s-dur" value="15"><span>15 ans</span></label><label><input type="radio" name="s-dur" value="20" checked><span>20 ans</span></label><label><input type="radio" name="s-dur" value="25"><span>25 ans</span></label></div></div>
+          <div class="row"><div class="lab"><b>Au taux de</b><small>(Taux actuel moyen)</small></div><div class="pin rate"><input id="s-taux" inputmode="decimal" value="3,16 %"></div></div>
+        </div>
+        <div class="circle" aria-live="polite">
+          <div class="l" id="r-l">Vous pourriez<br>emprunter</div>
+          <div class="v" id="r-v">—</div>
+          <div class="s" id="r-s">Renseignez vos revenus</div>
+          <div class="det hide" id="r-det"></div>
+          <button class="btn-dark" data-open id="r-btn">Faire étudier mon projet ✓</button>
+          <div class="ok">✓ Gratuit &amp; immédiat</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <section class="ae" id="assurance-emprunteur">
     <span class="kick">Assurance emprunteur</span>
@@ -465,7 +484,7 @@ $$('.tab').forEach(function(b){b.addEventListener('click',function(){
   $$('.x-capacq').forEach(function(x){x.classList.toggle('hide',tab==='men')});
   $$('.x-men').forEach(function(x){x.classList.toggle('hide',tab!=='men')});
   $$('.x-acq').forEach(function(x){x.classList.toggle('hide',tab!=='acq')});
-  $('#r-btn').textContent=tab==='men'?'Je simule mon crédit ✓':'Simulez votre projet ✓'; calc();
+  $('#r-btn').textContent=tab==='men'?'Faire étudier mon projet ✓':'Faire étudier mon projet ✓'; calc();
 })});
 $('#sim-in').addEventListener('input',calc); $('#sim-in').addEventListener('change',calc); calc();
 
@@ -479,14 +498,14 @@ function recap(){
   var m=num('#t-mnt'), d=+radio('t-dur');
   $('#rc-x').textContent=(m&&d)?eur(m*fact(TAUX[String(d)]||last.taux,d))+' / mois':'—';
 }
-function show(n){
+function show(n,quiet){
   step=n; $$('.step').forEach(function(s){s.classList.toggle('on',+s.dataset.s===n)});
-  $('#prog').style.width=(Math.min(n,4)/4*100)+'%';
+  $('#prog').style.width=({1:33,2:66,3:66}[n]||100)+'%';
   $('#nav').classList.toggle('hide',n===6);
   $('#back').style.visibility=(n===1||(n===5&&sent))?'hidden':'visible';
   $('#next').classList.toggle('hide',n<3);
-  $('#next').textContent=n===4?'Recontactez-moi':n===5?'Je finalise ma simulation':'Question suivante';
-  recap(); dl({event:'simulateur_etape',etape:n});
+  $('#next').textContent=n===4?'Être rappelé gratuitement':n===5?'Je finalise ma simulation':'Question suivante';
+  recap(); if(quiet)return; dl({event:'simulateur_etape',etape:n});
   var t=$('#tunnel'); if(t.getBoundingClientRect().top<0||t.getBoundingClientRect().top>window.innerHeight*.5) t.scrollIntoView({behavior:'smooth'});
 }
 function open(nature){
@@ -497,18 +516,19 @@ function open(nature){
   $('#t-chg').value=$('#s-chg').value; $('#t-app').value=$('#s-app').value;
   setRadio('t-dur',String(r.duree||20));
   if(tab==='acq') setRadio('nature',radio('s-bien')==='neuf'?'Acquérir un bien neuf':'Acquérir un bien ancien');
-  $('#tunnel').classList.remove('hide'); show(1);
+  $('#tunnel').classList.remove('hide'); if(step===1)show(1); else $('#tunnel').scrollIntoView({behavior:'smooth'});
 }
 $$('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open(b.dataset.nature)})});
-$$('[data-auto] input').forEach(function(i){i.addEventListener('click',function(){setTimeout(function(){show(step+1)},200)})});
+$$('[data-auto] input').forEach(function(i){i.addEventListener('click',function(){setTimeout(function(){show(step===2?4:step+1)},200)})});
 $$('input[name="parrain"]').forEach(function(i){i.addEventListener('change',function(){$('#parr').classList.toggle('hide',radio('parrain')!=='Oui')})});
-$('#back').addEventListener('click',function(){if(step>1)show(step-1)});
+$('#back').addEventListener('click',function(){if(step>1)show(step===4?2:step-1)});
+show(1,true);
 ['#t-mnt','#t-app'].forEach(function(s){$(s).addEventListener('input',recap)});
 $$('input[name="t-dur"]').forEach(function(i){i.addEventListener('change',recap)});
 
 function lead(){return {
   nom:$('#t-nom').value.trim(), prenom:$('#t-prenom').value.trim(), email:$('#t-email').value.trim(),
-  telephone:$('#t-tel').value.trim(), ville:$('#t-cp').value.trim(),
+  telephone:$('#t-tel').value.trim(), ville:$('#t-cp').value.trim(), creneau_rappel:radio('creneau')||'Indifférent',
   besoin:extra||'Crédit immobilier', nature:radio('nature'), avancement:radio('avancement'),
   montant_credit:$('#t-mnt').value+' €', revenus_foyer:$('#t-rev').value+' €/mois',
   credits_en_cours:($('#t-chg').value||'0')+' €/mois', duree:radio('t-dur')+' ans',
@@ -517,8 +537,8 @@ function lead(){return {
 }}
 function send(d,parrain){
   var body=Object.assign({access_key:WEB3FORMS_KEY,
-    subject:(parrain?'[Parrain] ':'')+'Simulateur – '+d.prenom+' – '+d.avancement+' – '+d.montant_credit,
-    from_name:'Simulateur courtier-larochelle.fr'},d);
+    subject:(parrain?'[Parrain] ':'')+'Rappel – '+d.prenom+' – '+d.nature+' – '+d.avancement+' – '+d.creneau_rappel,
+    from_name:'Landing courtier-larochelle.fr'},d);
   if(!WEB3FORMS_KEY||WEB3FORMS_KEY.indexOf('VOTRE')===0){console.warn('Clé Web3Forms manquante',body);return Promise.resolve()}
   return fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(body)})
     .then(function(r){return r.json()}).then(function(j){if(!j.success)throw new Error(j.message)});
@@ -534,6 +554,7 @@ $('#next').addEventListener('click',function(){
     var d=lead();
     if(!d.prenom)e='Indiquez votre prénom.';
     else if(d.telephone.replace(/\D/g,'').length<10)e='Numéro de téléphone invalide.';
+    else if(d.email&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email))e='Adresse e-mail invalide.';
     else if(!$('#t-cgu').checked)e='Merci de cocher la case de consentement.';
     $('#e4').textContent=e; if(e)return;
     var b=this; b.disabled=true; b.textContent='Envoi…';
@@ -543,7 +564,7 @@ $('#next').addEventListener('click',function(){
       if(typeof gtag==='function'&&window.ADS_CONVERSION) gtag('event','conversion',{send_to:window.ADS_CONVERSION,value:1.0,currency:'EUR'});
       show(6);
     }).catch(function(){$('#e4').textContent='Envoi impossible. Appelez David au 06 60 12 18 86.'})
-      .then(function(){b.disabled=false;if(step===4)b.textContent='Recontactez-moi'});
+      .then(function(){b.disabled=false;if(step===4)b.textContent='Être rappelé gratuitement'});
     return;
   }
   if(step===5){
